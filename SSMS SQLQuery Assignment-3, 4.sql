@@ -199,7 +199,9 @@ insert into Payments values(59812, 111, 780.00, '2025-03-01');
 update Payments set amount=650.00 where payment_id=10;
 
 --------13
-select avg(amount) as average_payment from Payments;
+select s.student_id, s.first_name, s.last_name, avg(p.amount) as average_payment from Students s 
+join Payments p on s.student_id=p.student_id 
+group by s.student_id, s.first_name, s.last_name;
 
 select * from Payments;
 drop table Payments;
